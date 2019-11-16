@@ -6,7 +6,7 @@ import './index.css';
 
 function Square(props) {
       return (
-        <button s
+        <button 
         className="square" 
         onClick={props.onClick}
         >
@@ -27,6 +27,9 @@ function Square(props) {
 
     handleClick(i) {
         const squares = this.state.squares.slice();
+        if (calculateWinner(squares) || squares[i]) {
+            return;
+        }
         squares[i] = this.state.xIsNext ? 'X' : 'O';
         this.setState({
             squares: squares,
